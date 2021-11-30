@@ -1,5 +1,6 @@
 #include "headers.h"
 #include "parser.h"
+
 /*****************************************************************************
 *   Operator overload: implement
 *****************************************************************************/
@@ -17,8 +18,27 @@ ostream  &operator<<(ostream &os, const Terminal &terminal)
 }
 
 /*****************************************************************************
+*   Global variable
+*****************************************************************************/
+
+int numBlocks;
+vector<string> block_name; //block_hash:key
+unordered_map<string, Block> block_hash;
+int block_area;
+
+int numTerminals;
+vector<string> terminal_name; //terminal_hash:key
+unordered_map<string, Terminal> terminal_hash;
+
+/*****************************************************************************
 *   Function: implement
 *****************************************************************************/
+
+void Block::rotate()
+{
+    is_rotate = 1;
+    swap(len,height);
+}
 
 void block_parser(char *filename)
 {
@@ -35,9 +55,11 @@ void block_parser(char *filename)
         block.name = name_temp;
         block.len = w - x;
         block.height = h - y;
+        block.is_rotate = 0;
         block_area += block.len * block.height;
         block_name.push_back(block.name);
         block_hash.insert(make_pair(block.name,block));
+        memset(name_temp, 0, sizeof(name_temp));
     }
 }
 

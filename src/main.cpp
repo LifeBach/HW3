@@ -1,20 +1,6 @@
 #include "headers.h"
 #include "parser.h"
 #include "floorplan_core.h"
-/*****************************************************************************
-*   Global variable
-*****************************************************************************/
-
-int numBlocks;
-vector<string> block_name; //block_hash:key
-unordered_map<string, Block> block_hash;
-int block_area;
-
-int numTerminals;
-vector<string> terminal_name; //terminal_hash:key
-unordered_map<string, Terminal> terminal_hash;
-
-Constraint constraint;
 
 /*****************************************************************************
 *   Main function
@@ -30,6 +16,11 @@ int main(int argc, char *argv[])
     block_parser(block_file);
     terminal_parser(terminal_file);
     //create constraint
-    constraint.set_constraint(block_area, dead_space_ratio);
-
+    Constraint constraint(block_area, dead_space_ratio);
+    //build init B* Tree
+    bst.build(constraint);
+    // auto max = max_element(begin(bst.contour),end(bst.contour)); 
+    // int max_h = *max;
+    // cout <<"curr_height:" << max_h << "constraint: "<< constraint.get_max_height()<<endl;
+    bst.traverse(bst.root);
 }

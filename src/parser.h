@@ -15,7 +15,8 @@ struct Block
     Coordinate coord;
     int len;
     int height;
-    bool rotate;
+    bool is_rotate;
+    void rotate();
 };
 
 struct Terminal
