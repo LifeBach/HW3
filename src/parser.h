@@ -19,6 +19,13 @@ struct Block
     void rotate();
 };
 
+struct Net
+{
+    int degree;
+    vector<string> netlist;
+    int hpwl();
+};
+
 struct Terminal
 {
     string name;
@@ -39,6 +46,10 @@ extern int numTerminals;
 extern vector<string> terminal_name; //hash key
 extern unordered_map<string, Terminal> terminal_hash;
 
+extern int numNets;
+extern int numPins;
+extern vector<Net> net_list;
+
 /*****************************************************************************
 *   Operator overload: declaration
 *****************************************************************************/
@@ -52,6 +63,8 @@ ostream  &operator<<(ostream &os, const Terminal &terminal);
 
 void block_parser(char * file_name);
 void terminal_parser(char *filename);
+void net_parser(char *filename);
+
 
 #endif
 

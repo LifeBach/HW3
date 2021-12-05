@@ -12,6 +12,7 @@ struct Constraint
         Constraint(const int area, const float dead_space_ratio);
         int get_max_height();
         int get_max_width();
+        bool is_satisfy(float width, float height);
     private:
         int max_height;
         int max_width;
@@ -31,18 +32,23 @@ struct BStarT_node
 
 struct BStarT
 {
-    int width;
-    int Height;
+    float width;
+    float height;
+    float area;
+    int wirelength;
     BStarT_node *root;
     unordered_map<string, BStarT_node*> node_hash;
     vector<int> contour;
-    BStarT() {};
+    BStarT(): width(0), height(0), area(0), wirelength(0) {};
     void build(Constraint &constraint);
-    BStarT_node* find(BStarT_node *curr_node, string name);
-    void update_contour(BStarT_node *curr_node, Constraint &constraint, int x);
+    void packing(Constraint &constraint);
     void block_swap(string block_name_1, string block_name_2);
     void block_rotate(string block_name);
     void traverse(BStarT_node *curr_node);
+    float cost(float alpha, float beta);
+    void find_init_result(Constraint &constraint);
+    void greedy_wirelen(Constraint &constraint, int time_limit);
+    int wirelen_cal();
 };
 
 /*****************************************************************************
@@ -52,6 +58,8 @@ struct BStarT
 extern Constraint constraint;
 extern BStarT bst;
 extern vector<int> contour;
+extern unsigned int seed;
+
 /*****************************************************************************
 *   operator overload: declaration
 *****************************************************************************/
@@ -61,5 +69,5 @@ ostream  &operator<<(ostream &os, const BStarT_node* &bst_node);
 /*****************************************************************************
 *   function: declaration
 *****************************************************************************/
-
+void out_floorplan(char *filename, BStarT tree);
 #endif

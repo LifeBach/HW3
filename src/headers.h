@@ -15,6 +15,7 @@
 #include <deque>
 #include <list>
 #include <time.h>
+#include <stack>
 using namespace std;
 
 #endif

@@ -7,7 +7,7 @@
 
 ostream  &operator<<(ostream &os, const Block &block)
 {
-    os << block.name << ":"<<" len: "<<block.len <<" height: "<<block.height<<endl;
+    os << block.name << ":"<<" len: "<<block.len <<" height: "<<block.height<<" x: "<<block.coord.x<<" y: "<<block.coord.y<<endl;
     return os;
 }
 
@@ -30,13 +30,17 @@ int numTerminals;
 vector<string> terminal_name; //terminal_hash:key
 unordered_map<string, Terminal> terminal_hash;
 
+int numNets;
+int numPins;
+vector<Net> net_list;
+
 /*****************************************************************************
 *   Function: implement
 *****************************************************************************/
 
 void Block::rotate()
 {
-    is_rotate = 1;
+    this->is_rotate = !this->is_rotate;
     swap(len,height);
 }
 
@@ -80,4 +84,76 @@ void terminal_parser(char *filename)
         terminal_name.push_back(terminal.name);
         terminal_hash.insert(make_pair(terminal.name,terminal));
     }
+}
+
+void net_parser(char *filename)
+{
+    FILE *fp; 
+    fp = fopen(filename,"r");
+    char name_temp[20];
+    string temp_name;
+    fscanf(fp,"NumNets : %d\n",&numNets);
+    fscanf(fp,"NumPins : %d\n",&numPins);
+    for(int j=0; j<numNets; j++)
+    {
+        Net net;
+        fscanf(fp,"NetDegree : %d\n", &net.degree);
+        for (int i=0; i<net.degree; i++)
+        {
+            fscanf(fp,"%s\n", name_temp);
+            temp_name = name_temp;
+            net.netlist.push_back(temp_name);
+        }
+        net_list.push_back(net);
+    }
+}
+
+int Net::hpwl()
+{
+    int x_max = 0;
+    int x_min = 99999999;
+    int y_max = 0;
+    int y_min = 99999999;
+    for (auto it = netlist.begin(); it != netlist.end(); it++)
+    {
+        if (block_hash.find(*it) != block_hash.end())
+        {
+            if(block_hash[*it].coord.x + (0.5 * block_hash[*it].len) > x_max)
+            {
+                x_max = block_hash[*it].coord.x + (0.5 * block_hash[*it].len);
+            }
+            if(block_hash[*it].coord.y + (0.5 * block_hash[*it].height) > y_max)
+            {
+                y_max = block_hash[*it].coord.y + (0.5 * block_hash[*it].height);
+            }
+            if(block_hash[*it].coord.x + (0.5 * block_hash[*it].len) < x_min)
+            {
+                x_min = block_hash[*it].coord.x + (0.5 * block_hash[*it].len);
+            }
+            if(block_hash[*it].coord.y + (0.5 * block_hash[*it].height) < y_min)
+            {
+                y_min = block_hash[*it].coord.y + (0.5 * block_hash[*it].height);
+            }
+        }
+        else if(terminal_hash.find(*it) != terminal_hash.end())
+        {
+            if(terminal_hash[*it].coord.x > x_max)
+            {
+                x_max = terminal_hash[*it].coord.x;
+            }
+            if(terminal_hash[*it].coord.y > y_max)
+            {
+                y_max = terminal_hash[*it].coord.y;
+            }
+            if(terminal_hash[*it].coord.x < x_min)
+            {
+                x_min = terminal_hash[*it].coord.x;
+            }
+            if(terminal_hash[*it].coord.y < y_min)
+            {
+                y_min = terminal_hash[*it].coord.y;
+            }
+        }
+    }
+    return (x_max-x_min)+(y_max-y_min);
 }
