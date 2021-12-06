@@ -24,4 +24,8 @@ In this homework, you are asked to implement an existing algorithm or develop yo
   1. Fixed-outline constraint: Each block must be entirely inside the floorplan region.
   2. Non-overlapping constraint: No two blocks overlap with each other.
 ### Data stucture: Binary Tree
-  
+Reference: Chang, Chang, Wu, and Wu, “B*-tree: a new representation for non- slicing floorplans,” DAC’00.
+### Algorithm: Random Search
+  - Perturbation
+    1.Swap
+    2.Rotate
