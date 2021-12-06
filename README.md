@@ -4,5 +4,5 @@ In this homework, you are asked to implement an existing algorithm or develop yo
 
 ## Problem Description
 ### Input
-A set 𝐵 of hard blocks, where each block 𝑏𝑖 in 𝐵 has a rectangular shape specified by 4 corners.
-A netlist 𝐸
+- A set 𝐵 of hard blocks, where each block 𝑏𝑖 in 𝐵 has a rectangular shape specified by 4 corners.
+- A netlist 𝐸
