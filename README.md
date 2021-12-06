@@ -23,3 +23,5 @@ In this homework, you are asked to implement an existing algorithm or develop yo
 - By assuming each block can be rotated by 90 degrees, the total wirelength of the floorplanning result and the runtime of your program are minimized subject to the following constraints.
   1. Fixed-outline constraint: Each block must be entirely inside the floorplan region.
   2. Non-overlapping constraint: No two blocks overlap with each other.
+### Data stucture: Binary Tree
+  
