@@ -4,7 +4,7 @@ In this homework, you are asked to implement an existing algorithm or develop yo
 
 ## Problem Description
 ### Input
-- A set 𝐵 of hard blocks, where each block {\b_i} in {\B} has a rectangular shape specified by 4 corners.
+- A set $B$ of hard blocks, where each block $b_i$ in $B$ has a rectangular shape specified by 4 corners.
 - A netlist 𝐸
 - The dead space ratio, which is predefined and passed by the argument. The aspect ratio of the floorplan region is 1, so you can calculate the width 𝑤 𝑓𝑙
 𝑤 = h 𝑓𝑙 𝑓𝑙
