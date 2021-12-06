@@ -27,5 +27,5 @@ In this homework, you are asked to implement an existing algorithm or develop yo
 Reference: Chang, Chang, Wu, and Wu, “B*-tree: a new representation for non- slicing floorplans,” DAC’00.
 ### Algorithm: Random Search
 Perturbation
-1.Swap
-2.Rotate
+  1.Swap
+  2.Rotate
