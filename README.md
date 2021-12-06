@@ -15,4 +15,5 @@ In this homework, you are asked to implement an existing algorithm or develop yo
   Then, the coordinates of the lower-left corner and upper-right corner of the floorplan region are (0, 0) and (**_w<sub>fl<sub>_** , **_h<sub>fl<sub>_**), respectively.
  
 ### Output
-The total wirelength of all nets, where the wirelength for each net is defined as the half-perimeter wirelength (HPWL) of the minimum bounding box of pins of the net. Each pin of block **_b<sub>i<sub>_** is located at the center of **_b<sub>i<sub>_**. Note that the **x-** or **y-** coordinate, say **_i_**, of each block center is rounded down to an integer **_k_** such that **_k_** ≤ **_i_** ≤ **_k_** + 1.
+- The total wirelength of all nets, where the wirelength for each net is defined as the half-perimeter wirelength (HPWL) of the minimum bounding box of pins of the net. Each pin of block **_b<sub>i<sub>_** is located at the center of **_b<sub>i<sub>_**. Note that the **x-** or **y-** coordinate, say **_i_**, of each block center is rounded down to an integer **_k_** such that **_k_** ≤ **_i_** ≤ **_k_** + 1.
+- The coordinates (**x<sub>i<sub>**,**y<sub>i<sub>**) of the lower-left corner of each block **_b<sub>i<sub>_**, as well as the rotation status (1 for rotated, and 0 for un-rotated).
