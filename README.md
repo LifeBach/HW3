@@ -4,8 +4,8 @@ In this homework, you are asked to implement an existing algorithm or develop yo
 
 ## Problem Description
 ### Input
-- A set **_B_** of hard blocks, where each block **_b<sub>i<sub>_** in **_B_** has a rectangular shape specified by 4 corners. (.hardblock)
-- A netlist **_E_** (.net)
+- A set **_B_** of hard blocks, where each block **_b<sub>i<sub>_** in **_B_** has a rectangular shape specified by 4 corners. (.hardblocks)
+- A netlist **_E_** (.nets)
 - Terminal (.pl)
 - The dead space ratio, which is predefined and passed by the argument. The aspect ratio of the floorplan region is 1, so you can calculate the width  **_w<sub>fl<sub>_** and height  **_h_** of the floorplan region as follows:
   
