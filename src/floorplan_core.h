@@ -48,7 +48,7 @@ struct BStarT
     float cost(float alpha, float beta);
     void find_init_result(Constraint &constraint);
     void greedy_wirelen(Constraint &constraint, int time_limit);
-    int wirelen_cal();
+    void wirelen_cal();
 };
 
 /*****************************************************************************

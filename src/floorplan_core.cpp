@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 BStarT bst;
-unsigned int seed = 1638623718;//(unsigned)time(NULL);
+unsigned int seed = 1638714618;//(unsigned)time(NULL);//1638623718;
 
 /*****************************************************************************
 *   Operator overload: implement
@@ -260,7 +260,7 @@ void BStarT::find_init_result(Constraint &constraint)
     }
 }
 
-int BStarT::wirelen_cal()
+void BStarT::wirelen_cal()
 {
     this->wirelength = 0;
     for(auto it = net_list.begin(); it != net_list.end(); it++)
